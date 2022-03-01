@@ -5,16 +5,19 @@ import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import Submit from "./routes/Submit";
+import Profile from "./routes/Profile";
+import Posts from "./components/posts/Posts";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
-          {" "}
-          //home page
+        <Route path="/" element={<App/>}>
+          <Route index element={<Posts/>} />
+
           <Route path="user" element={<App />}>
-            <Route path=":username" element={<App />}></Route> //proflie page
+            <Route path=":username" element={<Profile />}></Route> //proflie
+            page
           </Route>
           <Route path="r" element={<App />}>
             //index

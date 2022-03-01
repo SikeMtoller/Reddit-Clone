@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Submit() {
   const [title, setTitle] = useState<string>("");
@@ -37,6 +38,11 @@ function Submit() {
           cols={30}
           rows={10}
         ></textarea>
+        <Link to={"/user/:username"}>
+          <button type="submit" className="py-2 px-3 w-full rounded-lg bg-green-500">
+            Create Post
+          </button>
+        </Link>
       </form>
     </main>
   );
