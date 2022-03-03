@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { i_post } from "../../interfaces/i_post";
-import data from "../../data";
+import {getPosts} from "../../data";
 
 interface Props {
   post: i_post;
 }
 
 function Post({ post }: Props) {
-  const [posts, setPosts] = useState<i_post[]>(data);
+  const [posts, setPosts] = useState<i_post[]>(getPosts);
   const { id, community, title, text, user } = post;
   return (
-    <section key={id} className="mt-8  py-2 flex border-2 border-black">
+    <section key={id} className="mt-3  py-2 flex border-2 border-t-slate-300">
       <img
         className="w-3/12"
         src="https://www.gevim.co.il/wp-content/uploads/2013/12/default-placeholder-1024x1024-570x321.png"

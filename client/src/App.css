@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .App {
   text-align: center;
+}
+
+.default-color {
+  background-color: #dae0e6;
 }

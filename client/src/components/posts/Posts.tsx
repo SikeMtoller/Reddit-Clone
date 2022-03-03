@@ -1,15 +1,15 @@
-import { mainModule } from "process";
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../App";
 import { i_post } from "../../interfaces/i_post";
 import Post from "./Post";
+import {getPosts} from "../../data"
 
 function Posts() {
-  const data = useContext(AppContext);
-
+  // const {posts} = useContext(AppContext);
+  const data = getPosts();
   if (data) {
     return (
-      <ul>
+      <ul className="w-full mt-10">
         {data.map((item) => {
           return (
             <li>
