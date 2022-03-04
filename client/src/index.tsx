@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import Submit from "./routes/Submit";
-import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
 import ProfilePage from "./routes/ProfilePage";
 import PostPage from "./routes/PostPage";
+import Community from "./components/Community";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,12 +20,11 @@ ReactDOM.render(
           <Route path="user" element={<ProfilePage />}>
             //proflie page
           </Route>
-          <Route path="r" element={<App />}>
-            //index
-            <Route path=":subreddit" element={<App />} />
+          <Route path="r" element={<Outlet />}>
+            <Route path=":subreddit" element={<Community />} />
+            <Route path=":subreddit/:postId" element={<PostPage />} />
           </Route>
           <Route path="submit" element={<Submit />}></Route>
-          <Route path="post" element={<PostPage />}></Route>
         </Route>
 
         <Route path="/settings" element={<App />}></Route>
