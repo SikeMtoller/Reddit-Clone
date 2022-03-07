@@ -12,7 +12,7 @@ function profilePage() {
           return <Post post={post}></Post>; //make authentication work.
         })}
       </main>
-      <article>
+      <article className="hidden lg:block">
         <Profile user={user}></Profile>
       </article>
     </div>

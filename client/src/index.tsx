@@ -1,30 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./styles/index.css";
 import App from "./App";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import Submit from "./routes/Submit";
+import Submit from "./pages/Submit";
 import Posts from "./components/posts/Posts";
-import ProfilePage from "./routes/ProfilePage";
-import PostPage from "./routes/PostPage";
-import Community from "./components/Community";
+import ProfilePage from "./pages/ProfilePage";
+import PostPage from "./pages/PostPage";
+import Community from "./pages/Community"
+import Login from "./pages/Login";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Posts />} />
+          <Route index element={<Login />} />
 
+          <Route path="/home" element={<Posts />} />
           <Route path="user" element={<ProfilePage />}>
             //proflie page
           </Route>
-          <Route path="r" element={<Outlet />}>
-            <Route path=":subreddit" element={<Community />} />
-            <Route path=":subreddit/:postId" element={<PostPage />} />
+          <Route path="r" element={<Community />}>
+            <Route path=":subreddit" element={<Posts />} />
           </Route>
           <Route path="submit" element={<Submit />}></Route>
+          <Route path=":postId" element={<PostPage />} />
         </Route>
 
         <Route path="/settings" element={<App />}></Route>

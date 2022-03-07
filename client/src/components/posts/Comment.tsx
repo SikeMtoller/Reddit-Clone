@@ -24,8 +24,8 @@ function Comment({ comment }: Props) {
 
   const { id, text, user } = comment;
   return (
-    <div key={id} className="mt-8">
-      <h3 className="font-semibold text-xl">{user}</h3>
+    <div key={id} className="mt-6 pl-2 pb-2">
+      <h3 className="font-semibold text-xl">{`u/${user}`}</h3>
       <p>{text}</p>
 
       <div className="flex mt-2">

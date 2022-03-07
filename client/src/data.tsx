@@ -1,4 +1,5 @@
 import i_comment from "./interfaces/i_comment";
+import i_community from "./interfaces/i_community";
 import { i_post } from "./interfaces/i_post";
 import { i_user } from "./interfaces/i_user";
 const posts: i_post[] = [
@@ -40,6 +41,60 @@ const posts: i_post[] = [
         likes: 12,
         text: "Lorelor sit amet consectetur adipisicing elit. Ab possimus voluptatem.",
         user: "shamir",
+      },
+    ],
+  },
+];
+
+const communities: i_community[] = [
+  {
+    id: "35",
+    name: "javascript",
+    title:
+      "javascript - the communities for menashes like Hajaj who cant program",
+    about: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem soluta saepe sapiente voluptatibus adipisci molestias neque velit maiores obcaecati consequatur veritatis, laboriosam ipsum, consequuntur error explicabo iste sunt voluptatem veniam.`,
+    numberOfMembers: 1000,
+    posts: [
+      {
+        id: 1,
+        community: "meni",
+        title: "ela",
+        text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae iusto quo quasi quidem, saepe nobis aperiam repellendus doloremque minus possimus illum, quas, cumque voluptas eveniet modi mollitia necessitatibus voluptate libero? ",
+        user: "menashe",
+      },
+      {
+        id: 3,
+        community: "meni",
+        title: "ela",
+        text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae iusto quo quasi quidem, saepe nobis aperiam repellendus doloremque minus possimus illum, quas, cumque voluptas eveniet modi mollitia necessitatibus voluptate libero?",
+        user: "menashe",
+      },
+      {
+        id: 3,
+        community: "meni",
+        title: "ela",
+        text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae iusto quo quasi quidem, saepe nobis aperiam repellendus doloremque minus possimus illum, quas, cumque voluptas eveniet modi mollitia necessitatibus voluptate libero?",
+        user: "menashe",
+        comments: [
+          {
+            id: "asf",
+            likes: 4,
+            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab possimus voluptatem.",
+            user: "meni",
+          },
+          {
+            id: "asasdf",
+            likes: 6,
+            text: "Lorem ipsum dolor sitg elit. Ab possimus voluptatem.",
+            user: "menashe",
+          },
+          {
+            id: "aasdfsf",
+            likes: 12,
+            text: "Lorelor sit amet consectetur adipisicing elit. Ab possimus voluptatem.",
+            user: "shamir",
+          },
+        ],
       },
     ],
   },
@@ -88,5 +143,8 @@ export const getUsers = () => {
 };
 export const getComments = () => {
   return comments;
+};
+export const getCommunities = () => {
+  return communities;
 };
 //https://www.gevim.co.il/wp-content/uploads/2013/12/default-placeholder-1024x1024-570x321.png

@@ -9,7 +9,7 @@ function Profile({ user }: Props) {
   const { fullname, email, nickname, about, image } = user;
   return (
     //make responsive VISIBILITY BEN ZONA
-    <section className="shadow-xl border-2 border-sky-500 rounded-lg min-h-fit w-80 ml-3">
+    <section className="shadow-xl border-2 border-sky-500 rounded-lg min-h-fit w-80 ml-3 ">
       <div className="bg-sky-500 flex items-center mb-9">
         <img
           className="half-push mt-10 ml-3 rounded-md shadow-sm w-5/12 mr-3 border-2 border-white -mb-8"
