@@ -7,9 +7,9 @@ function Community() {
 
   return (
     <>
-      <header className="p-2">
+      <header className="ml-5 mt-4">
         <h1 className="text-3xl font-bold">{title}</h1>
-        <h2 className="opacity-70">{`r/${name}`}</h2>
+        <h2 className="opacity-70 text-xl">{`r/${name}`}</h2>
       </header>
 
       <div key="id" className="flex flex-row-reverse">

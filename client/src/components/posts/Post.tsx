@@ -14,10 +14,10 @@ function Post({ post }: Props) {
   const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {};
 
   return (
-    <Link  //http://localhost:3000/r/meni/1
+    <Link //http://localhost:3000/r/meni/1
       to={`/${id}`}
       key={id}
-      className="mb-3 hover:border-zinc-800 py-2 flex border-2 border-t-slate-300"
+      className="mb-1 mx-4 hover:border-zinc-800 py-2 flex border-2 border-t-slate-300"
     >
       <img
         className="w-3/12"

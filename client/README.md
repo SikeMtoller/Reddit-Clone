@@ -1,11 +1,13 @@
--make login component visible when clicking on profile icon
+-Make login component visible when clicking on profile icon
 
--make background darker on CreateCommunity click or Post click
+-Make background dismiss component
 
--make settings page
+-Make background darker on CreateCommunity click or Post click COMPLETED
 
--make onClick post Open post + comments / delete postPage
+-Make settings page  LATERRRRRRRR
 
--make design not dogshit
+-Make design not dogshit
 
--BACKEND (0)\_(0)
+-Black Background with 0.5 opacity for popup COMPLETED
+
+-BACKEND (0)_(0)

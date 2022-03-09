@@ -8,8 +8,9 @@ import Submit from "./pages/Submit";
 import Posts from "./components/posts/Posts";
 import ProfilePage from "./pages/ProfilePage";
 import PostPage from "./pages/PostPage";
-import Community from "./pages/Community"
+import Community from "./pages/Community";
 import Login from "./pages/Login";
+import Settings from "./pages/Settings";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,9 +28,8 @@ ReactDOM.render(
           </Route>
           <Route path="submit" element={<Submit />}></Route>
           <Route path=":postId" element={<PostPage />} />
+          <Route path="/settings" element={<Settings />}></Route>
         </Route>
-
-        <Route path="/settings" element={<App />}></Route>
 
         <Route
           path="*"

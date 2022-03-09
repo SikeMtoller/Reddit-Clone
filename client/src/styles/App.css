@@ -10,3 +10,8 @@
 .default-color {
   background-color: #dae0e6;
 }
+
+.main-sizes{
+  min-width: 100vw;
+  min-height: 100vh;
+}
