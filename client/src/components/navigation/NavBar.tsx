@@ -8,10 +8,9 @@ import DropDown from "./DropDown";
 function NavBar() {
   const SearchCommunity = (e: React.FormEvent<HTMLFormElement>) => {};
 
-
   const SearchUser = (e: React.FormEvent<HTMLFormElement>) => {};
   return (
-    <nav className="py-2 px-2 mb-2 border-b-2 border-black flex w-full justify-between">
+    <nav className="py-2 px-2 mb-2 border-b-2 border-b-black flex w-full justify-between">
       <Link to={"/"} className="justify-self-start">
         <img src="/bread-logo.png" className="w-10 h-10 ml-2" alt="" />
       </Link>
@@ -39,9 +38,8 @@ function NavBar() {
           placeholder="search User"
         />
       </form>
-      <Link to="/user?q=meni">
-        <DropDown />
-      </Link>
+
+      <DropDown />
     </nav>
   );
 }

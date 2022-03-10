@@ -17,7 +17,7 @@ function Post({ post }: Props) {
     <Link //http://localhost:3000/r/meni/1
       to={`/${id}`}
       key={id}
-      className="mb-1 mx-4 hover:border-zinc-800 py-2 flex border-2 border-t-slate-300"
+      className="mb-1 mx-4 hover:border-zinc-800 hover:border-2 flex border-t-2 border-t-slate-300"
     >
       <img
         className="w-3/12"

@@ -11,8 +11,6 @@ function classNames(...classes: string[]) {
 export default function DropDown() {
   const context = useContext(AppContext);
 
-
-
   const handleClick = () => {
     if (context) {
       const { showCreateCommunity, setShowCreateCommunity } = context;
@@ -72,16 +70,15 @@ export default function DropDown() {
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
+                <button
                   onClick={() => handleClick()}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
+                    "block px-4 py-2 text-sm w-full text-left"
                   )}
                 >
                   Create Community
-                </a>
+                </button>
               )}
             </Menu.Item>
             <form method="POST" action="#">

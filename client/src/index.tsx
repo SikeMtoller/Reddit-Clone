@@ -18,11 +18,8 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Login />} />
-
           <Route path="/home" element={<Posts />} />
-          <Route path="user" element={<ProfilePage />}>
-            //proflie page
-          </Route>
+          <Route path="user" element={<ProfilePage />}></Route>
           <Route path="r" element={<Community />}>
             <Route path=":subreddit" element={<Posts />} />
           </Route>
