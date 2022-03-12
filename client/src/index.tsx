@@ -17,7 +17,6 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<Login />} />
           <Route path="/home" element={<Posts />} />
           <Route path="user" element={<ProfilePage />}></Route>
           <Route path="r" element={<Community />}>
@@ -27,7 +26,7 @@ ReactDOM.render(
           <Route path=":postId" element={<PostPage />} />
           <Route path="/settings" element={<Settings />}></Route>
         </Route>
-
+        <Route index element={<Login />} />
         <Route
           path="*"
           element={

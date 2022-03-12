@@ -10,8 +10,8 @@ function NavBar() {
 
   const SearchUser = (e: React.FormEvent<HTMLFormElement>) => {};
   return (
-    <nav className="py-2 px-2 mb-2 border-b-2 border-b-black flex w-full justify-between">
-      <Link to={"/"} className="justify-self-start">
+    <nav className="pb-2 pt-3 px-2 border-b-2 border-b-black flex w-full justify-between">
+      <Link to={"/"} className="justify-self-start flex-shrink">
         <img src="/bread-logo.png" className="w-10 h-10 ml-2" alt="" />
       </Link>
       <form onSubmit={(e) => SearchCommunity(e)}>

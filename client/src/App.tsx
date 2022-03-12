@@ -41,7 +41,7 @@ function App() {
           )}
           <NavBar />
         </div>
-        <div className="rounded-md bg-slate-300 w-6/12 flex">
+        <div className="rounded-md bg-slate-300 w-6/12 flex mt-6">
           {location.pathname.endsWith("submit") || (
             <Link
               className="pl-5 m-2 rounded-lg bg-slate-200 w-full"

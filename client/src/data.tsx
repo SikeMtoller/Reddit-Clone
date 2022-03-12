@@ -6,21 +6,21 @@ const posts: i_post[] = [
   {
     id: 1,
     community: "meni",
-    title: "ela",
+    title: "Janana",
     text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae iusto quo quasi quidem, saepe nobis aperiam repellendus doloremque minus possimus illum, quas, cumque voluptas eveniet modi mollitia necessitatibus voluptate libero? ",
     user: "menashe",
   },
   {
     id: 3,
     community: "meni",
-    title: "ela",
+    title: "Janana",
     text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae iusto quo quasi quidem, saepe nobis aperiam repellendus doloremque minus possimus illum, quas, cumque voluptas eveniet modi mollitia necessitatibus voluptate libero?",
     user: "menashe",
   },
   {
     id: 3,
     community: "meni",
-    title: "ela",
+    title: "Janana",
     text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae iusto quo quasi quidem, saepe nobis aperiam repellendus doloremque minus possimus illum, quas, cumque voluptas eveniet modi mollitia necessitatibus voluptate libero?",
     user: "menashe",
     comments: [

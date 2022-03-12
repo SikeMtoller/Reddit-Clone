@@ -9,7 +9,7 @@ function PostPage() {
   const { community, text, title, id, user, comments, image } = post;
   return (
     <section className="flex justify-center">
-      <div className="flex flex-col max-w-lg border-black border-2 mt-3">
+      <div className="flex flex-col max-w-lg border-black border-2 mt-3 pl-1 pt-1 bg-white">
         <div className="flex">
           <h5 className="font-semibold">{`r/${community} ·`}</h5>
           &nbsp;

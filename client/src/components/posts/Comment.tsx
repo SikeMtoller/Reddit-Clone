@@ -8,17 +8,59 @@ interface Props {
 function Comment({ comment }: Props) {
   const [likeColor, setLikeColor] = useState<string>("black");
   const [numLikes, setNumLikes] = useState<number>(comment.likes);
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const clickBtn = e.currentTarget.innerText;
 
-    if (clickBtn === "like" && likeColor == "green-400") {
-      setLikeColor(() => "black");
-    } else if (clickBtn === "dislike" && likeColor == "red-500") {
-      setLikeColor(() => "black");
-    } else if (clickBtn === "like") {
-      setLikeColor(() => "green-400");
-    } else {
-      setLikeColor(() => "red-500");
+    if (clickBtn === "like") {
+      switch (likeColor) {
+        case "black":
+          setLikeColor(() => "green-400");
+          setNumLikes(() => {
+            const newNum = numLikes + 1;
+            return newNum;
+          });
+          break;
+        case "green-400":
+          setLikeColor(() => "black");
+          setNumLikes(() => {
+            const newNum = numLikes - 1;
+            return newNum;
+          });
+          break;
+        case "red-500":
+          setLikeColor(() => "green-400");
+          setNumLikes(() => {
+            const newNum = numLikes + 2;
+            return newNum;
+          });
+          break;
+      }
+    }
+    if (clickBtn === "dislike") {
+      switch (likeColor) {
+        case "black":
+          setLikeColor(() => "red-500");
+          setNumLikes(() => {
+            const newNum = numLikes - 1;
+            return newNum;
+          });
+          break;
+        case "green-400":
+          setLikeColor(() => "red-500");
+          setNumLikes(() => {
+            const newNum = numLikes - 2;
+            return newNum;
+          });
+          break;
+        case "red-500":
+          setLikeColor(() => "black");
+          setNumLikes(() => {
+            const newNum = numLikes + 1;
+            return newNum;
+          });
+          break;
+      }
     }
   };
 

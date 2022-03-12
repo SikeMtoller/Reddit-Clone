@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginForm from "../components/forms/LoginForm";
+import SignupForm from "../components/forms/SignupForm";
 
 function Login() {
   const [username, setUsername] = useState<string>("");
@@ -12,6 +13,17 @@ function Login() {
 
   return (
     <>
+      <header className="mt-10">
+        <article className="w-1/2 text-center">
+          <h1 className="font-semibold text-4xl">Welcome to</h1>
+          <h2
+            className="font-bold text-6xl pl-6
+        text-blue-500"
+          >
+            Breddit
+          </h2>
+        </article>
+      </header>
       <main className="flex mt-10 justify-evenly">
         <section className="flex flex-col">
           <h1 className="font-bold text-3xl">Login</h1>
@@ -19,7 +31,7 @@ function Login() {
         </section>
         <section>
           <h1 className="font-bold text-3xl">Sign up</h1>
-          <LoginForm/>
+          <SignupForm />
         </section>
       </main>
     </>
