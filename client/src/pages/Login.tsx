@@ -25,14 +25,8 @@ function Login() {
         </article>
       </header>
       <main className="flex mt-10 justify-evenly">
-        <section className="flex flex-col">
-          <h1 className="font-bold text-3xl">Login</h1>
-          <LoginForm />
-        </section>
-        <section>
-          <h1 className="font-bold text-3xl">Sign up</h1>
-          <SignupForm />
-        </section>
+        <LoginForm/>
+        <SignupForm />
       </main>
     </>
   );
