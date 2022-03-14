@@ -7,7 +7,7 @@ var cors = require("cors");
 const { default: mongoose } = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config({ path: __dirname + "/.env" });
-
+const dbo = require("./db/conn");
 // var options = {
 //   keepAlive: 1,
 //   connectTimeoutMS: 30000,
@@ -18,7 +18,7 @@ dotenv.config({ path: __dirname + "/.env" });
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-
+var homeRouter = require("./routes/home");
 var app = express();
 
 // view engine setup
@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/home", homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -49,6 +50,13 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+dbo.connectToServer(function (err) {
+  if (err) {
+    console.error(err);
+    process.exit();
+  }
 });
 
 module.exports = app;

@@ -1,16 +1,30 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../App";
 import { i_post } from "../../interfaces/i_post";
 import Post from "./Post";
-import {getPosts} from "../../data"
+
+import axios from "axios";
 
 function Posts() {
-  // const {posts} = useContext(AppContext);
-  const data = getPosts();
-  if (data) {
+  const [posts, setPosts] = useState<i_post[]>();
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const res = await axios.get("http://localhost:9000/home");
+        setPosts(res.data);
+        console.log(posts);
+      } catch {
+        console.log("FAILED TO FETCH");
+      }
+    }
+  },[]);
+
+  if (posts) {
     return (
       <ul className="w-full mt-10">
-        {data.map((item) => {
+        {posts.map((item) => {
+          
           return (
             <li>
               <Post post={item}></Post>
@@ -29,3 +43,6 @@ function Posts() {
 }
 
 export default Posts;
+
+
+

@@ -17,8 +17,9 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/home" element={<Posts />} />
-          <Route path="user" element={<ProfilePage />}></Route>
+          <Route path="home" element={<Posts />} />
+          <Route path="user/:userID" element={<ProfilePage />} />
+
           <Route path="r" element={<Community />}>
             <Route path=":subreddit" element={<Posts />} />
           </Route>

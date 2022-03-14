@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { getPosts, getUsers } from "./data";
 import "./styles/App.css";
@@ -6,6 +6,7 @@ import { i_post } from "./interfaces/i_post";
 import { i_user } from "./interfaces/i_user";
 import NavBar from "./components/navigation/NavBar";
 import CreateCommunity from "./components/CreateCommunity";
+import axios from "axios";
 
 type AppContextType = {
   users: () => i_user[];
@@ -22,6 +23,8 @@ function App() {
     useState<boolean>(false);
 
   const [setVisible, setSetVisible] = useState<boolean>(false);
+
+ 
 
   return (
     <AppContext.Provider

@@ -3,5 +3,4 @@ export default interface i_comment {
   user: string;
   text: string;
   likes: number;
-  title?: string;
 }
