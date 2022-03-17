@@ -1,10 +1,10 @@
 import i_comments from "./i_comment";
 export interface i_post {
-  id: number;
+  _id: number;
   community: string;
   title: string;
-  text: string;
-  user: string;
+  body: string;
+  author: string;
   comments?: i_comments[];
   image?: string;
 }

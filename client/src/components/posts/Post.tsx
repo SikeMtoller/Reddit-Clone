@@ -8,19 +8,16 @@ interface Props {
 }
 
 function Post({ post }: Props) {
-  const [posts, setPosts] = useState<i_post[]>(getPosts);
-  const { id, community, title, text, user } = post;
-
-  const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {};
-
+  const { _id: id, community, title, body: text, author: user } = post;
+  // const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {};
   return (
-    <Link //http://localhost:3000/r/meni/1
+    <Link 
       to={`/${id}`}
       key={id}
       className="mb-1 mx-4 hover:border-zinc-800 hover:border-2 flex border-t-2 border-t-slate-300 bg-white"
     >
       <img
-        className="w-3/12"
+        className="h-24"
         src="https://www.gevim.co.il/wp-content/uploads/2013/12/default-placeholder-1024x1024-570x321.png"
         alt={title}
       />
@@ -31,7 +28,6 @@ function Post({ post }: Props) {
           &nbsp;
           <h5 className="text-slate-400">{`Posted by ${user}`}</h5>
         </div>
-        <p>{text}</p>
       </article>
     </Link>
   );

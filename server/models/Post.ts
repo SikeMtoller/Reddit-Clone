@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import * as mongoose from "mongoose";
+import Comment from "./comment";
 let Schema = mongoose.Schema;
 
 let postSchema = new Schema(
@@ -12,6 +13,7 @@ let postSchema = new Schema(
     author: {
       type: String,
     },
+    comments: [{ type: Comment }],
   },
   { timestamps: true }
 );

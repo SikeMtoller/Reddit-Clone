@@ -6,16 +6,16 @@ interface Props {
   user: i_user;
 }
 function Profile({ user }: Props) {
-  const { fullname, email, nickname, about, image } = user;
+  const { fullname, email, username: nickname, about } = user;
   return (
     //make responsive VISIBILITY BEN ZONA
     <section className="shadow-xl border-2 border-sky-500 rounded-lg min-h-fit w-80 ml-3 ">
       <div className="bg-sky-500 flex items-center mb-9">
-        <img
+        {/* <img
           className="half-push mt-10 ml-3 rounded-md shadow-sm w-5/12 mr-3 border-2 border-white -mb-8"
           src={image}
           alt={nickname}
-        />
+        /> */}
         <h2 className="font-bold text-xl pt-6">{fullname}</h2>
       </div>
       <div className="px-2">

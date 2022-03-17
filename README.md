@@ -4,10 +4,9 @@
 
 -BACKEND (0)\_(0)
 
+backend structure:
 
-backend structure: 
-
-posts: 
+posts:
 fetch posts at home page by subreddit(/home)
 fetch comments at post page (/:post)
 search results at nav-form redirect to /r/:subreddit

@@ -20,7 +20,7 @@ function Login() {
             className="font-bold text-6xl pl-6
         text-blue-500"
           >
-            Breddit
+            Bearddit
           </h2>
         </article>
       </header>

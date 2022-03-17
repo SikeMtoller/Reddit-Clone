@@ -64,7 +64,7 @@ function Comment({ comment }: Props) {
     }
   };
 
-  const { id, text, user } = comment;
+  const { id, body: text, author: user } = comment;
   return (
     <div key={id} className="mt-6 pl-2 pb-2">
       <h3 className="font-semibold text-xl">{`u/${user}`}</h3>
