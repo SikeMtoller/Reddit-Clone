@@ -8,12 +8,12 @@ interface Props {
 }
 
 function Post({ post }: Props) {
-  const { _id: id, community, title, body: text, author: user } = post;
+  const { _id: id, community = "default", title, author } = post;
   // const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {};
   return (
-    <Link 
+    <Link
       to={`/${id}`}
-      key={id}
+     
       className="mb-1 mx-4 hover:border-zinc-800 hover:border-2 flex border-t-2 border-t-slate-300 bg-white"
     >
       <img
@@ -26,7 +26,7 @@ function Post({ post }: Props) {
         <div className="flex">
           <h5 className="font-semibold">{`r/${community} ·`}</h5>
           &nbsp;
-          <h5 className="text-slate-400">{`Posted by ${user}`}</h5>
+          <h5 className="text-slate-400">{`Posted by ${author}`}</h5>
         </div>
       </article>
     </Link>

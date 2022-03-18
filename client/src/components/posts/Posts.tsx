@@ -1,42 +1,43 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import { AppContext } from "../../App";
 import { i_post } from "../../interfaces/i_post";
 import Post from "./Post";
 import axios from "axios";
 
 function Posts() {
-  const [posts, setPosts] = useState<i_post[]>([]);
-
+  const {
+    data: posts,
+    isError,
+    status,
+    isLoading,
+  } = useQuery("posts", fetchPosts);
   async function fetchPosts() {
-    try {
-      const res = await axios.get("http://localhost:9000/home");
-      setPosts(() => res.data);
-    } catch (e) {
-      console.error("FAILED TO FETCH:", e);
-    }
+    const res = await fetch("http://localhost:9000/home");
+    return res.json();
   }
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  if (isLoading) {
+    return <div key={"loading"}>Loading Data...</div>;
+  }
 
-  if (posts) {
+  if (isError) {
+    return (
+      <div>
+        <h1 key={"error"}>Error fetching Data..</h1>
+      </div>
+    );
+  } else {
     return (
       <ul className="w-full mt-10">
-        {posts.map((item) => {
+        {posts.map((item: i_post) => {
           return (
-            <li>
+            <li key={item._id}>
               <Post post={item}></Post>
             </li>
           );
         })}
       </ul>
-    );
-  } else {
-    return (
-      <div>
-        <h1>NOTHING HERE!!</h1>
-      </div>
     );
   }
 }

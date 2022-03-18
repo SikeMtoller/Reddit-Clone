@@ -1,4 +1,3 @@
-
 import * as mongoose from "mongoose";
 let Schema = mongoose.Schema;
 
@@ -10,6 +9,9 @@ let commentSchema = new Schema(
     body: {
       type: String,
     },
+    date: {
+      type: Date
+    },
     likes: {
       type: Number,
       required: false,
@@ -18,6 +20,6 @@ let commentSchema = new Schema(
   { timestamps: true }
 );
 
-let Comment = mongoose.model("comment", commentSchema);
+let Comment = mongoose.model("Comment", commentSchema);
 
-export default Comment
+export default Comment;

@@ -15,9 +15,11 @@ var dbo = require("./db/conn");
 // mongoose.connect(process.env.DATABASE_URL, options, (err) => {
 //   if (err) console.log(err);
 // });
-var indexRouter = require("./routes/login");
+var indexRouter = require("./routes/users/login");
 var usersRouter = require("./routes/users");
-var homeRouter = require("./routes/home");
+var homeRouter = require("./routes/posts/home");
+var postRouter = require("./routes/posts/post");
+
 var app = express();
 
 // view engine setup
@@ -32,8 +34,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/home", homeRouter);
+app.use("/post/:postId", postRouter);
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

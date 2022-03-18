@@ -9,11 +9,14 @@ let commentSchema = new Schema({
     body: {
         type: String,
     },
+    date: {
+        type: Date
+    },
     likes: {
         type: Number,
         required: false,
     },
 }, { timestamps: true });
-let Comment = mongoose.model("comment", commentSchema);
+let Comment = mongoose.model("Comment", commentSchema);
 exports.default = Comment;
 //# sourceMappingURL=comment.js.map

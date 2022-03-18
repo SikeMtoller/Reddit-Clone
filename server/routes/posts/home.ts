@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var dbo = require("../db/conn");
+var { getDb } = require("../../db/conn");
 
 router.route("/").get(async function (req, res) {
-  const dbConnect = dbo.getDb();
+  const dbConnect = getDb();
   dbConnect
     .collection("posts")
     .find({})
