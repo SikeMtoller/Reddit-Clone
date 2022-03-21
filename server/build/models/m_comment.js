@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
-let commentSchema = new Schema({
+const commentSchema = new Schema({
     author: {
         type: String,
     },
@@ -15,5 +15,5 @@ let commentSchema = new Schema({
     },
 }, { timestamps: true });
 let Comment = mongoose.model("Comment", commentSchema);
-exports.default = Comment;
-//# sourceMappingURL=comment.js.map
+module.exports = Comment;
+//# sourceMappingURL=m_comment.js.map

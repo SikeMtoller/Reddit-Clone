@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
-const comment_1 = require("./comment");
+const m_comment_1 = require("./m_comment");
 let Schema = mongoose.Schema;
 let postSchema = new Schema({
     title: {
@@ -13,8 +13,8 @@ let postSchema = new Schema({
     author: {
         type: String,
     },
-    comments: [{ type: comment_1.default }],
+    comments: [{ type: m_comment_1.default }],
 }, { timestamps: true });
 let Post = mongoose.model("post", postSchema);
-module.exports = Post;
+exports.default = Post;
 //# sourceMappingURL=Post.js.map

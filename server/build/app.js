@@ -1,25 +1,24 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var bodyParser = require("body-parser");
 var cors = require("cors");
+var mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config({ path: __dirname + "/.env" });
-var dbo = require("./db/conn");
-// var options = {
-//   keepAlive: 1,
-//   connectTimeoutMS: 30000,
-// };
-// mongoose.connect(process.env.DATABASE_URL, options, (err) => {
-//   if (err) console.log(err);
-// });
-var indexRouter = require("./routes/users/login");
+const connectionString = process.env.DATABASE_URL;
+mongoose.connect(connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+mongoose.connection.on("connected", () => {
+    console.log("Mongoose is connected!!!!");
+});
 var usersRouter = require("./routes/users");
-var homeRouter = require("./routes/posts/home");
-var postRouter = require("./routes/posts/post");
+var postRouter = require("./routes/posts");
+var communityRouter = require("./routes/communities");
 var app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -28,12 +27,12 @@ app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/", indexRouter);
-app.use("/home", homeRouter);
-app.use("/post/:postId", postRouter);
+app.use("/post", postRouter);
 app.use("/users", usersRouter);
+app.use("/community", communityRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
@@ -46,12 +45,6 @@ app.use(function (err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render("error");
-});
-dbo.connectToServer(function (err) {
-    if (err) {
-        console.error(err);
-        process.exit();
-    }
 });
 module.exports = app;
 //# sourceMappingURL=app.js.map

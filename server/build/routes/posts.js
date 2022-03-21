@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var { getDb } = require("../../db/conn");
 /* GET home page. */
 //this route fins ONE post =>
 router.route("/").get(async function (req, res) {
@@ -12,4 +11,4 @@ router.route("/").get(async function (req, res) {
 });
 // implement AUTH here (?)
 module.exports = router;
-//# sourceMappingURL=post.js.map
+//# sourceMappingURL=posts.js.map

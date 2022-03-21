@@ -1,10 +1,13 @@
 import * as mongoose from "mongoose";
 let Schema = mongoose.Schema;
+const Post = require("./m_post");
 
-let postSchema = new Schema({
+const userSchema = new Schema({
   fullname: {
     type: String,
     required: true,
+    trim: true,
+    lowercase: true,
   },
   email: {
     type: String,
@@ -21,8 +24,12 @@ let postSchema = new Schema({
   about: {
     type: String,
   },
+  posts: [
+    { type: Schema.Types.ObjectId, ref: Post, required: true, default: [] },
+  ],
+  
 });
 
-let Post = mongoose.model("post", postSchema);
+let User = mongoose.model("User", userSchema);
 
-module.exports = Post;
+module.exports = User;

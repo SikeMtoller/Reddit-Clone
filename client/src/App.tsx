@@ -5,7 +5,7 @@ import "./styles/App.css";
 import { i_post } from "./interfaces/i_post";
 import { i_user } from "./interfaces/i_user";
 import NavBar from "./components/navigation/NavBar";
-import CreateCommunity from "./components/CreateCommunity";
+import CreateCommunity from "./components/forms/CreateCommunity";
 import axios from "axios";
 import { QueryClient, QueryClientProvider } from "react-query";
 

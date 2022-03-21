@@ -2,10 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
-let userSchema = new Schema({
+const Post = require("./m_post");
+const userSchema = new Schema({
     fullname: {
         type: String,
         required: true,
+        trim: true,
+        lowercase: true,
     },
     email: {
         type: String,
@@ -22,7 +25,10 @@ let userSchema = new Schema({
     about: {
         type: String,
     },
+    posts: [
+        { type: Schema.Types.ObjectId, ref: Post, required: true, default: [] },
+    ],
 });
-let Post = mongoose.model("User", userSchema);
-module.exports = Post;
-//# sourceMappingURL=user.js.map
+let User = mongoose.model("User", userSchema);
+module.exports = User;
+//# sourceMappingURL=m_user.js.map

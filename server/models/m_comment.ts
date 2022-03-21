@@ -1,16 +1,13 @@
 import * as mongoose from "mongoose";
 let Schema = mongoose.Schema;
 
-let commentSchema = new Schema(
+const commentSchema = new Schema(
   {
     author: {
       type: String,
     },
     body: {
       type: String,
-    },
-    date: {
-      type: Date
     },
     likes: {
       type: Number,
@@ -22,4 +19,4 @@ let commentSchema = new Schema(
 
 let Comment = mongoose.model("Comment", commentSchema);
 
-export default Comment;
+module.exports = Comment

@@ -7,10 +7,13 @@ import { getComments, getPosts } from "../data";
 import { i_post } from "../interfaces/i_post";
 
 function PostPage() {
+  
   let { postId } = useParams();
+
   const { data: post, status } = useQuery<i_post>("post", fetchPost);
+  
   async function fetchPost() {
-    const res = await fetch(`http://localhost:9000/post/${postId}`);
+    const res = await fetch(`http://localhost:9000/post?postId=${postId}`);
     return res.json();
   }
 
