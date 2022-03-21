@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import { Outlet, useParams } from "react-router-dom";
 import { getCommunities } from "../data";
@@ -7,16 +7,19 @@ import i_community from "../interfaces/i_community";
 function Community() {
   let { subreddit } = useParams();
 
-  const { data, isError, error, isLoading } = useQuery<i_community[], Error>(
-    "community",
-    fetchCommnuity
-  );
+  const { data, isError, error, isLoading, refetch } = useQuery<
+    i_community[],
+    Error
+  >("community", fetchCommnuity);
   async function fetchCommnuity() {
     const res = await fetch(
       `http://localhost:9000/community?name=r/${subreddit}`
     );
     return res.json();
   }
+  useEffect(() => {
+    refetch();
+  }, [subreddit]);
 
   if (isError) {
     return <div>ERROR</div>;
