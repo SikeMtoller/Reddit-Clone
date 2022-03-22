@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-const Comment = require("../models/m_comment");
+const Comment = require("./m_comment");
 let Schema = mongoose.Schema;
 
 const postSchema = new Schema(
@@ -7,7 +7,7 @@ const postSchema = new Schema(
     title: {
       type: String,
     },
-    description: {
+    body: {
       type: String,
     },
     author: {
@@ -18,20 +18,21 @@ const postSchema = new Schema(
       //Take from Form
       type: String,
     },
-    comments: {
-      posts: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: Comment,
-          required: true,
-          default: [],
-        },
-      ],
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: Comment,
+        required: true,
+        default: [],
+      },
+    ],
+    image: {
+      type: String,
     },
   },
   { timestamps: true }
 );
 
-let Post = mongoose.model("Post", postSchema);
+const Post = mongoose.model("Post", postSchema);
 
 module.exports = Post;

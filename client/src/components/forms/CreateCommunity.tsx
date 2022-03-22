@@ -9,7 +9,7 @@ function CreateCommunity() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(`Name is: ${name} title is ${title} about is ${about}`);
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },

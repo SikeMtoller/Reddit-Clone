@@ -19,12 +19,14 @@ function Community() {
   }
   useEffect(() => {
     refetch();
-  }, [subreddit]);
+  }, [subreddit,refetch]);
 
   if (isError) {
     return <div>ERROR</div>;
   } else if (!data) {
-    return <div>DATA NOT AVAILABLE</div>;
+    return <div>404 ERROR NOT FOUND</div>;
+  } else if (data.length === 0) {
+    return <div>Subreddit does NOT exist yet</div>;
   } else {
     const { name, title, posts, about, numberOfMembers } = data[0];
     return (

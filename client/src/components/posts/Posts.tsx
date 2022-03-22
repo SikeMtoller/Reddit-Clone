@@ -3,8 +3,6 @@ import { useQuery } from "react-query";
 import { AppContext } from "../../App";
 import { i_post } from "../../interfaces/i_post";
 import Post from "./Post";
-import axios from "axios";
-
 function Posts() {
   const {
     data: posts,

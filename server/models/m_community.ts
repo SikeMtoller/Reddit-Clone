@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-const mongoose = require("mongoose");
+import * as mongoose from "mongoose";
 let Schema = mongoose.Schema;
 const Post = require("./m_post");
 

@@ -3,9 +3,23 @@ import { Link } from "react-router-dom";
 
 function Submit() {
   const [title, setTitle] = useState<string>("");
-  const [text, setText] = useState<string>("");
+  const [body, setBody] = useState<string>("");
   const [community, setCommunity] = useState<string>("");
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, body, community }),
+    };
+
+    fetch("http://localhost:9000/post", requestOptions).then(() =>
+      console.log("New Post!")
+    );
+  };
+
   return (
     <section className="flex flex-row justify-center">
       <main className="w-6/12">
@@ -31,22 +45,20 @@ function Submit() {
             placeholder="Title"
           />
           <textarea
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
             className="pl-1 border-neutral-400 border-2 rounded-md"
             name="text"
             id="text"
             cols={30}
             rows={10}
           ></textarea>
-          <Link to={"/user/:username"}>
-            <button
-              type="submit"
-              className="py-2 px-3 w-full rounded-lg bg-green-500"
-            >
-              Create Post
-            </button>
-          </Link>
+          <button
+            type="submit"
+            className="py-2 px-3 w-full rounded-lg bg-green-500"
+          >
+            Create Post
+          </button>
         </form>
       </main>
     </section>

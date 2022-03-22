@@ -1,8 +1,6 @@
 var express = require("express");
 var router = express.Router();
 const Community = require("../models/m_community");
-var mongoose = require("mongoose");
-/* GET users listing. */
 
 //Create a Community
 router
