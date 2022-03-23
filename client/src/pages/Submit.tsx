@@ -15,8 +15,8 @@ function Submit() {
       body: JSON.stringify({ title, body, community }),
     };
 
-    fetch("http://localhost:9000/post", requestOptions).then(() =>
-      console.log("New Post!")
+    fetch("http://localhost:9000/post", requestOptions).then((res) =>
+      res.status === 404 ? console.log("ERROR") : console.log("New Post!")
     );
   };
 

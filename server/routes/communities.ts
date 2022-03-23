@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const Community = require("../models/m_community");
+var Community = require("../models/m_community");
 
 //Create a Community
 router
@@ -21,7 +21,7 @@ router
   //Search for one community
   .get("/", async function (req, res) {
     const { name } = req.query;
-    const foundCommunity = await Community.find({ name });
+    const foundCommunity = await Community.find({ name }).populate("posts");
     res.send(foundCommunity);
 
     //http://localhost:9000/community?name=r/custom3

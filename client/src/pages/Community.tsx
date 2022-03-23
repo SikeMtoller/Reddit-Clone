@@ -19,16 +19,19 @@ function Community() {
   }
   useEffect(() => {
     refetch();
-  }, [subreddit,refetch]);
+  }, [subreddit, refetch]);
+
+  console.log(data);
 
   if (isError) {
     return <div>ERROR</div>;
   } else if (!data) {
-    return <div>404 ERROR NOT FOUND</div>;
+    return <div>404 NOT FOUND</div>;
   } else if (data.length === 0) {
     return <div>Subreddit does NOT exist yet</div>;
   } else {
     const { name, title, posts, about, numberOfMembers } = data[0];
+    console.log(posts);
     return (
       <>
         <header className="ml-5 mt-4">
@@ -41,7 +44,7 @@ function Community() {
             <h3 className="bg-amber-400 py-1 px-2">About Community:</h3>
             <p className="p-2 bg-white">{about}</p>
           </aside>
-          <Outlet />
+          <Outlet context={posts} />
         </div>
       </>
     );
