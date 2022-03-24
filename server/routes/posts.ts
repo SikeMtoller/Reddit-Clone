@@ -4,9 +4,20 @@ const Post = require("../models/m_post");
 var Community = require("../models/m_community");
 
 router
-  .route("/")
+  .route("/:id")
   .get(async function (req, res) {
-    res.send("menashe");
+    const { id } = req.params;
+
+    const foundPost = await Post.findById(id, (err) => {
+      console.log(err);
+    })
+      .clone()
+      .catch((e) => console.log(e));
+    if (foundPost) {
+      res.send(foundPost).status(200);
+    } else {
+      res.status(404).send("Post Not Found");
+    }
   })
   //this route finds ONE post =>
   .post(async function (req, res) {

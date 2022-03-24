@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import { Outlet, useParams } from "react-router-dom";
-import { getCommunities } from "../data";
 import i_community from "../interfaces/i_community";
 
 function Community() {
   let { subreddit } = useParams();
 
-  const { data, isError, error, isLoading, refetch } = useQuery<
-    i_community[],
-    Error
-  >("community", fetchCommnuity);
+  const {
+    data: community,
+    isError,
+    error,
+    isLoading,
+    refetch,
+  } = useQuery<i_community[], Error>("community", fetchCommnuity);
   async function fetchCommnuity() {
     const res = await fetch(
       `http://localhost:9000/community?name=r/${subreddit}`
@@ -21,17 +23,23 @@ function Community() {
     refetch();
   }, [subreddit, refetch]);
 
-  console.log(data);
-
+  if (isLoading) {
+    return <div>Loading Data</div>;
+  }
   if (isError) {
-    return <div>ERROR</div>;
-  } else if (!data) {
+    return <div>an Error Occurred</div>;
+  } else if (!community) {
     return <div>404 NOT FOUND</div>;
-  } else if (data.length === 0) {
-    return <div>Subreddit does NOT exist yet</div>;
+  } else if (community.length === 0) {
+    return (
+      <div>
+        <span className="font-semibold text-xl">{subreddit}</span> does NOT
+        exist yet
+      </div>
+    );
   } else {
-    const { name, title, posts, about, numberOfMembers } = data[0];
-    console.log(posts);
+    const { name, title, posts, about, numberOfMembers } = community[0];
+
     return (
       <>
         <header className="ml-5 mt-4">

@@ -22,6 +22,7 @@ mongoose.connection.on("connected", () => {
 var usersRouter = require("./routes/users");
 var postRouter = require("./routes/posts");
 var communityRouter = require("./routes/communities");
+var registerRouter = require("./routes/register");
 var app = express();
 
 // view engine setup
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/post", postRouter);
 app.use("/users", usersRouter);
 app.use("/community", communityRouter);
+app.use("/register", registerRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

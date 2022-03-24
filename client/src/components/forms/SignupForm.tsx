@@ -1,11 +1,26 @@
-import React from "react";
-
+import React, { useReducer, useState } from "react";
+import { i_user } from "../../interfaces/i_user";
+import { parseISO } from "date-fns";
 function SignupForm() {
+  const [user, setUser] = useState<i_user>({
+    id: "1",
+    fullname: "",
+    email: "",
+    birthday: "",
+    username: "",
+    password: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { birthday, email, fullname, password, username } = user;
+  };
+
   return (
     <div className="flex-1 max-w-2xl mx-2">
       <div>
         <div className="mt-5 md:mt-0 md:col-span-2 ">
-          <form action="#" method="POST">
+          <form onSubmit={(e) => handleSubmit(e)}>
             <div className="shadow overflow-hidden sm:rounded-md">
               <div className="px-4 py-5 bg-white sm:p-6">
                 <h1 className="font-bold text-3xl mb-3">Sign Up</h1>
@@ -15,12 +30,16 @@ function SignupForm() {
                       htmlFor="first-name"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      First name
+                      Full Name
                     </label>
                     <input
                       type="text"
                       name="first-name"
                       id="first-name"
+                      value={user.fullname}
+                      onChange={(e) =>
+                        setUser({ ...user, fullname: e.target.value })
+                      }
                       autoComplete="given-name"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
@@ -28,15 +47,19 @@ function SignupForm() {
 
                   <div className="col-span-6 sm:col-span-3">
                     <label
-                      htmlFor="last-name"
+                      htmlFor="password"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Last name
+                      Password
                     </label>
                     <input
                       type="text"
-                      name="last-name"
-                      id="last-name"
+                      name="password"
+                      id="password"
+                      value={`${user.password}`}
+                      onChange={(e) =>
+                        setUser({ ...user, password: e.target.value })
+                      }
                       autoComplete="family-name"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
@@ -53,6 +76,10 @@ function SignupForm() {
                       type="text"
                       name="email-address"
                       id="email-address"
+                      value={`${user.email}`}
+                      onChange={(e) =>
+                        setUser({ ...user, email: e.target.value })
+                      }
                       autoComplete="email"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
@@ -69,7 +96,14 @@ function SignupForm() {
                       id="country"
                       name="country"
                       type="date"
-                      className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      value={`${user.birthday}`}
+                      onChange={(e) =>
+                        setUser({
+                          ...user,
+                          birthday: e.target.value,
+                        })
+                      }
+                      className="mt-1 block w-max py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     ></input>
                   </div>
 
@@ -84,6 +118,13 @@ function SignupForm() {
                       type="text"
                       name="street-address"
                       id="street-address"
+                      value={`${user.username}`}
+                      onChange={(e) =>
+                        setUser({
+                          ...user,
+                          username: e.target.value,
+                        })
+                      }
                       autoComplete="street-address"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { i_post } from "../../interfaces/i_post";
-import { getPosts } from "../../data";
 import { Link, useSearchParams } from "react-router-dom";
 
 interface Props {

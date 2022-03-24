@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { getPosts, getUsers } from "./data";
 import "./styles/App.css";
 import { i_post } from "./interfaces/i_post";
 import { i_user } from "./interfaces/i_user";
@@ -10,8 +9,6 @@ import axios from "axios";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 type AppContextType = {
-  users: () => i_user[];
-  posts: () => i_post[];
   showCreateCommunity: boolean;
   setShowCreateCommunity: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -30,8 +27,6 @@ function App() {
   return (
     <AppContext.Provider
       value={{
-        users: getUsers,
-        posts: getPosts,
         showCreateCommunity,
         setShowCreateCommunity,
       }}

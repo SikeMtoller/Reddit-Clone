@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 const Post = require("./m_post");
+const Community = require("./m_community");
 const userSchema = new Schema({
     fullname: {
         type: String,
@@ -10,6 +11,7 @@ const userSchema = new Schema({
         trim: true,
         lowercase: true,
     },
+    password: { type: String, required: true },
     email: {
         type: String,
         required: true,
@@ -25,9 +27,8 @@ const userSchema = new Schema({
     about: {
         type: String,
     },
-    posts: [
-        { type: Schema.Types.ObjectId, ref: Post, required: true, default: [] },
-    ],
+    posts: [{ type: Schema.Types.ObjectId, ref: Post, default: [] }],
+    communities: [{ type: Schema.Types.ObjectId, ref: Community, default: [] }],
 });
 let User = mongoose.model("User", userSchema);
 module.exports = User;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import Comment from "../components/posts/Comment";
-import { getComments, getPosts } from "../data";
+
 
 import { i_post } from "../interfaces/i_post";
 
@@ -13,7 +13,7 @@ function PostPage() {
   const { data: post, status } = useQuery<i_post>("post", fetchPost);
   
   async function fetchPost() {
-    const res = await fetch(`http://localhost:9000/post?postId=${postId}`);
+    const res = await fetch(`http://localhost:9000/post/${postId}`);
     return res.json();
   }
 

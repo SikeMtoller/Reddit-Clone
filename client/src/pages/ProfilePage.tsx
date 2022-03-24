@@ -1,10 +1,16 @@
 import React from "react";
-import { getPosts, getUsers } from "../data";
+import { i_post } from "../interfaces/i_post";
 import Post from "../components/posts/Post";
-import Profile from "../components/profile/Profile";
+// import Profile from "../components/profile/Profile";
+import { useParams } from "react-router-dom";
+import { i_user } from "../interfaces/i_user";
+
+// interface Props {
+//   posts: i_post[];
+// }
 function profilePage() {
-  const posts = getPosts();
-  const user = getUsers()[0];
+  // const { user } = useParams();
+  const posts: i_post[] = [];
   return (
     <div className="flex flex-grow mt-4">
       <main className="flex flex-col">
@@ -13,7 +19,7 @@ function profilePage() {
         })}
       </main>
       <article className="hidden lg:block">
-        <Profile user={user}></Profile>
+        {/* <Profile></Profile>  //add user prop */}
       </article>
     </div>
   );

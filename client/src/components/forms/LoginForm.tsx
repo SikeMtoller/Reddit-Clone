@@ -33,7 +33,7 @@ function LoginForm() {
                         htmlFor="email-address"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Email address
+                        Password
                       </label>
                       <input
                         type="text"

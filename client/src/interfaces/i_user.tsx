@@ -4,8 +4,9 @@ import { i_post } from "./i_post";
 export interface i_user {
   id: string;
   fullname: string;
+  password: string;
   email: string;
-  birthday: Date;
+  birthday: string;
   username: string;
   about?: string;
   posts?: i_post[];
