@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 const Post = require("./m_post");
 const Community = require("./m_community");
+const passportLocalMongoose = require("passport-local-mongoose");
 const userSchema = new Schema({
     fullname: {
         type: String,
@@ -11,17 +12,13 @@ const userSchema = new Schema({
         trim: true,
         lowercase: true,
     },
-    password: { type: String, required: true },
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     birthday: {
         type: Date,
-        required: true,
-    },
-    username: {
-        type: String,
         required: true,
     },
     about: {
@@ -30,6 +27,7 @@ const userSchema = new Schema({
     posts: [{ type: Schema.Types.ObjectId, ref: Post, default: [] }],
     communities: [{ type: Schema.Types.ObjectId, ref: Community, default: [] }],
 });
+userSchema.plugin(passportLocalMongoose);
 let User = mongoose.model("User", userSchema);
 module.exports = User;
 //# sourceMappingURL=m_user.js.map

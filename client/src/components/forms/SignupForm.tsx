@@ -14,6 +14,21 @@ function SignupForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { birthday, email, fullname, password, username } = user;
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        birthday,
+        email,
+        fullname,
+        password,
+        username,
+      }),
+    };
+
+    fetch("http://localhost:9000/register", requestOptions).then(() =>
+      console.log("New User!")
+    );
   };
 
   return (

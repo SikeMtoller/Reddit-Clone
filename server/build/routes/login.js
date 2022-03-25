@@ -1,9 +1,11 @@
 var express = require("express");
 var router = express.Router();
-/* GET home page. */
-router.get("/", function (req, res, next) {
-    res.render("index", { title: "Express" });
+var User = require("../models/m_user");
+var passport = require("passport");
+router
+    .route("/")
+    .post(passport.authenticate("local", { failureRedirect: "/login" }), async function (req, res) {
+    res.json("Auth Complete");
 });
-// implement AUTH here (?)
 module.exports = router;
 //# sourceMappingURL=login.js.map
