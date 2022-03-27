@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
 router.route("/").get(function (req, res) {
-    req.session.userID = null;
-    res.send("Logout succeccfull");
+    req.logout();
+    res.send("Logout successfull");
 });
 module.exports = router;
 //# sourceMappingURL=logout.js.map

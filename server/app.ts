@@ -31,6 +31,12 @@ var loginRouter = require("./routes/login");
 var logoutRouter = require("./routes/logout");
 var app = express();
 
+const isLoggedin = (req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return res.status(401).send("Please Log in");
+  }
+};
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");

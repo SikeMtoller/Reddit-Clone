@@ -2,9 +2,8 @@ var express = require("express");
 var router = express.Router();
 const Post = require("../models/m_post");
 var Community = require("../models/m_community");
-router
-    .route("/:id")
-    .get(async function (req, res) {
+// GET ONE POST TO POST PAGE
+router.route("/:id").get(async function (req, res) {
     const { id } = req.params;
     const foundPost = await Post.findById(id, (err) => {
         console.log(err);
@@ -17,11 +16,11 @@ router
     else {
         res.status(404).send("Post Not Found");
     }
-})
-    //this route finds ONE post =>
-    .post(async function (req, res) {
+});
+// ADD NEW POST TO COMMUNITY
+router.route("/").post(async function (req, res) {
     const { title, body, community } = req.body;
-    const foundCommunity = await Community.find({ name: community })
+    await Community.find({ name: community })
         .then((data) => {
         if (data.length) {
             const postData = {
@@ -38,6 +37,7 @@ router
                 Community.findOneAndUpdate({ name: community }, { $push: { posts: newPost } }).catch((e) => {
                     console.log(e);
                 });
+                res.status(200).send("Added Post");
             })
                 .catch((e) => {
                 console.log(e);

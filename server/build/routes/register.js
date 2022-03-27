@@ -12,12 +12,16 @@ router.route("/").post(async (req, res) => {
             username,
             about,
         });
-        const registeredUser = User.register(user, password);
-        await registeredUser.save();
-        req.session.userID = user._id;
+        const registeredUser = await User.register(user, password);
+        req.login(registeredUser, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
     }
     catch (e) {
         console.log(e);
+        // Add something to tell user a User already Exists
     }
 });
 module.exports = router;
